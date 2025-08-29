@@ -41,7 +41,7 @@ const Leave = () => {
       }
 
       await axios.post(
-        "https://eams-2-7uip.onrender.com/api/leaves/request",
+        "http://localhost:5000/api/leaves/request",
         {
           type: newLeave.type,
           startDate: newLeave.startDate.toISOString().split("T")[0],

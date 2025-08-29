@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import { ToastContainer, toast } from 'react-toastify';
 
 interface DecodedToken {
@@ -40,7 +40,7 @@ const AddInfo = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('https://eams-2-7uip.onrender.com/api/info', formData, {
+      await axios.post('http://localhost:5000/api/info', formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFormData({

@@ -21,7 +21,7 @@ const Profile = () => {
 
       setLoading(true);
 
-      const res = await axios.get<LeaveRecord[]>("https://backend-1-xieb.onrender.com/api/leaves", {
+      const res = await axios.get<LeaveRecord[]>(`${import.meta.env.VITE_API_URL}/api/leaves`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

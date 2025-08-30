@@ -40,7 +40,7 @@ const AddInfo = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('https://backend-1-xieb.onrender.com/api/info', formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/info`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFormData({

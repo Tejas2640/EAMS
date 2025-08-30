@@ -34,7 +34,7 @@ const Attendance = () => {
         }
 
         const response = await axios.get(
-          `https://backend-1-xieb.onrender.com/api/attendance/${userId}`,
+          `${import.meta.env.VITE_API_URL}/api/attendance/${userId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -72,7 +72,7 @@ const Attendance = () => {
       }
 
       const response = await axios.post(
-        "https://backend-1-xieb.onrender.com/api/attendance/clock-in",
+        `${import.meta.env.VITE_API_URL}/api/attendance/clock-in`,
         {}, // No need to send userId (handled in backend)
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -111,7 +111,7 @@ const Attendance = () => {
       }
 
       const response = await axios.post(
-        "https://backend-1-xieb.onrender.com/api/attendance/clock-out",
+        `${import.meta.env.VITE_API_URL}/api/attendance/clock-out`,
         {}, // No need to send userId (handled in backend)
         { headers: { Authorization: `Bearer ${token}` } }
       );

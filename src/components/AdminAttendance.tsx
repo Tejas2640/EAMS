@@ -30,7 +30,7 @@ const AdminAttendance = () => {
         }
 
         const headers = { Authorization: `Bearer ${token}` };
-        const response = await axios.get("https://backend-1-xieb.onrender.com/api/attendance", { headers });
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/attendance`, { headers });
         setAttendanceData(response.data);
       } catch (error: any) {
         console.error("Error fetching attendance data:", error);

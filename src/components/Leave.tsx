@@ -41,7 +41,7 @@ const Leave = () => {
       }
 
       await axios.post(
-        "https://backend-1-xieb.onrender.com/api/leaves/request",
+        `${import.meta.env.VITE_API_URL}/api/leaves/request`,
         {
           type: newLeave.type,
           startDate: newLeave.startDate.toISOString().split("T")[0],

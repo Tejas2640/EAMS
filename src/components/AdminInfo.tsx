@@ -53,7 +53,7 @@ const AdminInfo = () => {
 
   const fetchInfos = async () => {
     try {
-      const { data } = await axios.get('https://backend-1-xieb.onrender.com/api/info', {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/info`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setInfos(data);
@@ -67,7 +67,7 @@ const AdminInfo = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`https://backend-1-xieb.onrender.com/api/info/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/info/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success('Deleted successfully!');
@@ -81,7 +81,7 @@ const AdminInfo = () => {
   const handleIncrement = async (id: string, percentage: number) => {
     try {
       await axios.put(
-        `https://backend-1-xieb.onrender.com/api/info/${id}/increment`,
+        `${import.meta.env.VITE_API_URL}/api/info/${id}/increment`,
         { percentage },
         {
           headers: { Authorization: `Bearer ${token}` },

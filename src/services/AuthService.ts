@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://backend-1-xieb.onrender.com/api/auth'; // Ensure this matches the backend URL
+const API_URL = `${import.meta.env.VITE_API_URL}/api/auth`; // Ensure this matches the backend URL
 
 
 const AuthService = {

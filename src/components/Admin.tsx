@@ -37,7 +37,7 @@ const Admin = () => {
 
         const headers = { Authorization: `Bearer ${token}` };
 
-        const attendanceResponse = await axios.get("https://backend-1-xieb.onrender.com/api/attendance?populate=user", { headers });
+        const attendanceResponse = await axios.get(`${import.meta.env.VITE_API_URL}/api/attendance?populate=user`, { headers });
         const attendanceWithNames = attendanceResponse.data.map((record: any) => ({
           _id: record._id,
           userId: record.userId,
@@ -48,7 +48,7 @@ const Admin = () => {
         }));
         setAttendanceData(attendanceWithNames);
 
-        const leaveResponse = await axios.get("https://backend-1-xieb.onrender.com/api/leaves", { headers });
+        const leaveResponse = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaves`, { headers });
         setLeaveRequests(leaveResponse.data);
 
       } catch (error: any) {

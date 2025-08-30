@@ -32,7 +32,7 @@ const AdminLeaves = () => {
         }
 
         const headers = { Authorization: `Bearer ${token}` };
-        const response = await axios.get("https://backend-1-xieb.onrender.com/api/leaves/", { headers });
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaves/`, { headers });
         setLeaveRequests(response.data);
       } catch (error: any) {
         console.error("Error fetching leave requests:", error);
@@ -55,12 +55,12 @@ const AdminLeaves = () => {
 
       const headers = { Authorization: `Bearer ${token}` };
       await axios.put(
-        `https://backend-1-xieb.onrender.com/api/leaves/${leaveId}`,
+        `${import.meta.env.VITE_API_URL}/api/leaves/${leaveId}`,
         { status: newStatus },
         { headers }
       );
 
-      const response = await axios.get("https://backend-1-xieb.onrender.com/api/leaves/", { headers });
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaves/`, { headers });
       setLeaveRequests(response.data);
     } catch (error: any) {
       console.error("Error updating leave status:", error);

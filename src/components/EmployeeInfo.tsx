@@ -19,7 +19,7 @@ const EmployeeInfo = () => {
 
   const fetchMyInfo = async () => {
     try {
-      const { data } = await axios.get('https://backend-1-xieb.onrender.com/api/info/me', {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/info/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setInfo(data);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth'; // Ensure this matches the backend URL
+const API_URL = 'https://backend-1-xieb.onrender.com/api/auth'; // Ensure this matches the backend URL
 
 
 const AuthService = {

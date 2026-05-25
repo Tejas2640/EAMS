@@ -2,36 +2,31 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+
 import authRoutes from "./routes/authRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import leaveRoutes from "./routes/leaveRoutes.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
-import infoRoutes from "./routes/infoRoutes.js"; // ✅ NEW
+import infoRoutes from "./routes/infoRoutes.js";
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ Allowed origins (both deployed + local frontend)
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://eams-13ws.vercel.app"
-];
-
 // Middleware
 app.use(express.json());
+
+// CORS
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [
+      "http://localhost:5173",
+      "https://eams-kdu3.vercel.app",
+    ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
@@ -41,20 +36,24 @@ app.use("/api", attendanceRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/leaves", leaveRoutes);
 app.use("/api/employees", employeeRoutes);
-app.use("/api/info", infoRoutes); // ✅ NEW
+app.use("/api/info", infoRoutes);
 
-// MongoDB connection
+// Test Route
+app.get("/", (req, res) => {
+  res.send("✅ API Running...");
+});
+console.log("MONGO URI =>", process.env.MONGO_URI);
+// MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected..."))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
-
-// Health Check Route
-app.get("/", (req, res) => {
-  res.send("✅ Employee Attendance API is running...");
-});
+  .then(() => {
+    console.log("✅ MongoDB Connected");
+  })
+  .catch((err) => {
+    console.log("❌ MongoDB Error:", err);
+  });
 
 // Start Server
-app.listen(PORT, () =>
-  console.log(`🚀 Server running on port ${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});

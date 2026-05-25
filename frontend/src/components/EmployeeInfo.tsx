@@ -19,7 +19,7 @@ const EmployeeInfo = () => {
 
   const fetchMyInfo = async () => {
     try {
-      const { data } = await axios.get('https://eams-2-7uip.onrender.com/api/info/me', {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/info/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setInfo(data);

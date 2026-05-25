@@ -69,86 +69,32 @@ const AddInfo = () => {
   }
 
  return (
-  <div className="min-h-screen w-full bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 flex items-center justify-center px-4 py-10">
-    
-    <div className="w-full max-w-5xl bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl p-8 border border-white/40">
-      
-      <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
+  <div className="fixed top-16 w-full min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center px-4">
+    <div className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
         Add Employee Info
       </h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >
-        <input
-          type="text"
-          name="user"
-          value={formData.user}
-          onChange={handleChange}
-          placeholder="User ID"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
-        />
-
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Name"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
-        />
-
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
-        />
-
-        <input
-          type="text"
-          name="position"
-          value={formData.position}
-          onChange={handleChange}
-          placeholder="Position"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
-        />
-
-        <input
-          type="text"
-          name="role"
-          value={formData.role}
-          onChange={handleChange}
-          placeholder="Role"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
-        />
-
-        <input
-          type="text"
-          name="department"
-          value={formData.department}
-          onChange={handleChange}
-          placeholder="Department"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
-        />
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {["user","name","email","position","role","department"].map((field) => (
+          <input
+            key={field}
+            type="text"
+            name={field}
+            value={(formData as any)[field]}
+            onChange={handleChange}
+            placeholder={field.toUpperCase()}
+            className="p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+            required
+          />
+        ))}
 
         <input
           type="number"
           name="salary"
           value={formData.salary}
           onChange={handleChange}
-          placeholder="Salary"
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
+          className="p-3 border rounded-xl"
         />
 
         <input
@@ -156,21 +102,19 @@ const AddInfo = () => {
           name="joiningDate"
           value={formData.joiningDate}
           onChange={handleChange}
-          className="w-full border border-gray-300 bg-white/70 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          required
+          className="p-3 border rounded-xl"
         />
 
         <button
           type="submit"
-          className="md:col-span-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition shadow-lg hover:shadow-xl"
+          className="md:col-span-2 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold hover:scale-[1.02] transition"
         >
-          Add Employee Info
+          Add Employee
         </button>
       </form>
 
-      <ToastContainer position="bottom-right" autoClose={1200} />
+      <ToastContainer />
     </div>
   </div>
 );}
-
 export default AddInfo;

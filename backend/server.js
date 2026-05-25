@@ -23,7 +23,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://eams-kdu3.vercel.app",
+      "http://ams-sable.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],

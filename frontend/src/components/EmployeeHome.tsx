@@ -10,7 +10,7 @@ const EmployeeHome = () => {
   };
 
   return (
-    <div className="fixed top-16 flex flex-col items-center min-h-screen w-full bg-gray-200 px-4 py-8">
+    <div className="w-full min-h-screen pt-20 pb-10 px-4 overflow-y-auto">
       <div className="bg-blue-200 p-8 rounded-2xl shadow-lg mb-10">
         <h1 className="text-2xl font-semibold !text-black mb-2">Welcome {userDetails.name}</h1>
         <p className="text-gray-600 text-lg">
